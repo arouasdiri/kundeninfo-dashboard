@@ -1,0 +1,790 @@
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+.column {
+    flex: 1;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.container {
+    display: grid;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.container>* {
+    justify-self: center;
+    align-self: center;
+}
+
+.container_iN,
+.container_Ak,
+.accordion-content,
+.task-table,
+.contract-table,
+.info,
+.activities {
+    overflow-y: auto;
+}
+.left-column,
+.center-column,
+.right-column {
+    display: grid;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.container_Ak {
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.header_main {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f2f2f2;
+    padding-bottom: 10px;
+}
+
+.info {
+    line-height: 1.6;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-weight: bold;
+    display: inline-block;
+
+}
+
+.value {
+    color: #333;
+}
+
+.value-email {
+    color: #ff6600;
+    font-weight: bold;
+}
+.edit-btn {
+    background-color: #ff6600;
+    color: white;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input,
+select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    width: calc(100% - 140px);
+    margin-top: 5px;
+}
+
+.address {
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    line-height: 1.6;
+}
+
+.buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.edit-btn {
+    background-color: #ff6600;
+    color: white;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input,
+select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    width: calc(100% - 140px);
+    margin-top: 5px;
+}
+
+.edit-mode .value,
+.edit-mode .address {
+    border: 1px dashed #4CAF50;
+    background-color: #e7ffe7;
+}
+.button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+
+
+.button.add-button {
+    background-color: #28a745;
+}
+
+.button.close-button {
+    background-color: #6c757d;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.accordion-header {
+    background-color: #fff;
+    cursor: pointer;
+    padding: 20px 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #f2f2f2;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion-icon {
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f5f5f5;
+}
+
+.negative-amount {
+    color: #ff0000;
+}
+
+.positive-amount {
+    color: #28a745;
+}
+
+.icon-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#anrede-dropdown {
+    width: 120px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#anrede-dropdown:hover,
+#anrede-dropdown:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+}
+#geschlecht-dropdown {
+    width: 140px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#geschlecht-dropdown:hover,
+#geschlecht-dropdown:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+}
+
+/* ---------------------------------------------------Ubersicht Veträge----------------------------------------------------- */
+.contract-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.contract-table th,
+.contract-table td {
+    padding: 16px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.contract-table th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+.contract-table td {
+    background-color: #ffffff;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.contract-table tr:hover td {
+    background-color: #f0f0f0;
+}
+
+.contract-table tr:last-child td {
+    border-bottom: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.add-button {
+    background-color: #28a745;
+}
+
+.add-button:hover {
+    background-color: #218838;
+}
+.form-popup .add-button {
+    background-color: #28a745;
+}
+
+.form-popup .add-button:hover {
+    background-color: #218838;
+}
+/* ---------------------------------------------------Ubersicht Veträge----------------------------------------------------- */
+
+/* ---------------------------------------------------Ubersicht Schäden ----------------------------------------------------- */
+
+.accordion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.accordion-icon {
+    display: inline-block;
+    font-size: 12px;
+    border: solid #ff6600;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transition: transform 0.3s ease;
+    transform: rotate(45deg);
+    position: relative;
+    width: 7px;
+    height: 7px;
+    margin-left: 10px;
+}
+
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(225deg);
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.task-table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.task-table th,
+.task-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+.task-table td {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.add-task {
+    cursor: pointer;
+    color: #28a745;
+    font-size: 20px;
+    text-align: right;
+    display: block;
+    margin-top: 10px;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.form-popup input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-popup button {
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.form-popup .close-button {
+    background-color: #6c757d;
+}
+
+.form-popup .close-button:hover {
+    background-color: #5a6268;
+}
+
+/* ---------------------------------------------------Ubersicht Schäden ----------------------------------------------------- */
+
+/* ---------------------------------------------------Inkasse/Exkasso ----------------------------------------------------- */
+.container_iN {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.container_iN .dropdown {
+    width: 160px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.container_iN .dropdown:hover,
+.container_iN .dropdown:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+    background-color: #f9f9f9;
+}
+.container_iN .dropdown option {
+    padding: 10px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.dropdown {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: border 0.3s ease;
+}
+
+.dropdown:hover {
+    border-color: #999;
+}
+
+.total-amount {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ddd;
+}
+
+td {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+td:nth-child(3) {
+    text-align: left;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+tr:hover td {
+    background-color: #ddd;
+}
+
+.negative-amount {
+    color: #d9534f;
+}
+
+.positive-amount {
+    color: #5cb85c;
+}
+
+.icon-button {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    margin-right: 5px;
+    border: none;
+    background: none;
+    transition: transform 0.2s;
+}
+
+.icon-button:hover {
+    transform: scale(1.2);
+}
+
+.add-task {
+    cursor: pointer;
+    color: #28a745;
+    font-size: 24px;
+    text-align: right;
+    display: block;
+    margin-top: 20px;
+}
+
+/* ---------------------------------------------------Inkasse/Exkasso ----------------------------------------------------- */
+
+/* ---------------------------------------------------Aktivitats und kontaktverlauf ----------------------------------------------------- */
+
+.header_Ak {
+    background-color: #ff8c00;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    font-size: 18px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info-button {
+    background-color: #fff;
+    color: #ff8c00;
+    border: 2px solid #ff8c00;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.info-button:hover {
+    background-color: #ff8c00;
+    color: white;
+}
+
+.filter {
+    text-align: right;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.filter select {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.filter select {
+    width: 160px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.filter select:hover,
+.filter select:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
+    background-color: #f9f9f9;
+}
+.filter select option {
+    padding: 10px;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.activities {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.activity {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.activity:last-child {
+    border-bottom: none;
+}
+
+.circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 12px;
+    margin-top: 5px;
+}
+
+.circle.gray {
+    background-color: #808080;
+}
+
+.circle.red {
+    background-color: #ff4d4d;
+}
+
+.circle.green {
+    background-color: #4caf50;
+}
+
+.circle.orange {
+    background-color: #ffa726;
+}
+
+.circle.yellow {
+    background-color: #ffd700;
+}
+
+.text {
+    flex-grow: 1;
+}
+
+.text .title {
+    font-size: 15px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.text .part1 {
+    font-weight: bold;
+    color: #333;
+}
+
+.text .part2 {
+    font-weight: normal;
+    color: #ff8c00;
+    margin-left: 5px;
+}
+
+.text .date {
+    font-size: 12px;
+    color: #888;
+    margin-top: 3px;
+}
+
+.text .source {
+    background: #eee;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    color: #666;
+}
+
+.info-popup {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+    font-size: 14px;
+}
+
+.info-popup h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.info-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-popup ul li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.info-popup ul li span {
+    display: inline-block;
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    vertical-align: middle;
+    box-sizing: border-box !important;
+}
+
+.info-popup ul li .gray {
+    background-color: #808080;
+}
+
+.info-popup ul li .red {
+    background-color: #ff4d4d;
+}
+
+.info-popup ul li .green {
+    background-color: #4caf50;
+}
+
+.info-popup ul li .orange {
+    background-color: #ffa726;
+}
+
+.info-popup ul li .yellow {
+    background-color: #ffd700;
+}
+/* ---------------------------------------------------Aktivitats und kontaktverlauf ----------------------------------------------------- */

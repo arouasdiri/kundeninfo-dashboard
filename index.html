@@ -1,0 +1,585 @@
+ <!doctype html>
+<html lang="de-DE">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=1240" />
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <video id="background-video" autoplay loop muted playsinline>
+        <source src="img/background.mp4" type="video/mp4">
+        Dein Browser unterstützt keine Videos.
+    </video>
+    <header id="header"> 
+        <nav>
+            <a href="#" id="logo" title="Startseite">Startseite</a>
+            <ul>
+                <li class="current"><a href="#">Dashboard</a></li>
+                <li><a href="https://rwe-vip.freischaltportal.de/">VIP</a></li>
+                <li><a href="#">Erstellen</a></li>
+                <li><a href="#">Suchen</a></li>
+                <li><a href="#">Werkzeuge</a></li>
+                <li><a href="#">Admin</a></li>
+            </ul>
+        </nav>
+
+        <div class="right">
+            <form id="superSearchForm" class="search" action="/ca/super_search.html" method="GET">
+                <div class="input_wrap">
+                    <input value="" name="qry" type="text">
+                </div>
+            </form>
+            <div data-element="userProfil">
+                <a id="persMenuToggle" class="user" href="#"><span>AH</span></a>
+            </div>
+        </div>  
+	</header>
+    <main>
+        <div class="column left-column">
+            <div class="container_iN">
+                <div class="header_main">Kundeninformationen</div>
+                <div class="info">
+                    <div class="info-item">
+                        <span class="label">Anrede:</span>
+                        <span class="value" id="anrede">Herr</span>
+                        <select id="anrede-dropdown" style="display:none;">
+                            <option value="Herr">Herr</option>
+                            <option value="Frau">Frau</option>
+                            <option value="Divers">Divers</option>
+                        </select>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Vorname:</span>
+                        <span class="value" contenteditable="false">Max</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Nachname:</span>
+                        <span class="value" contenteditable="false">Mustermann</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Geburtsdatum:</span>
+                        <span class="value" contenteditable="false">04.09.1973</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Geschlecht:</span>
+                        <span class="value" id="geschlecht">männlich</span>
+                        <select id="geschlecht-dropdown" style="display:none;">
+                            <option value="männlich">männlich</option>
+                            <option value="weiblich">weiblich</option>
+                            <option value="divers">divers</option>
+                        </select>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Adresse:</span>
+                        <div class="address" contenteditable="false">
+                            <span>Musterstraße 123,</span><br>
+                            <span>12345 Musterort</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Rechnungsanschrift:</span>
+                        <div class="address" contenteditable="false">
+                            c/o Maximilian Mustermann<br>
+                            Dorfstraße 0815<br>
+                            54321 Musterdorf
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Telefon:</span>
+                        <span class="value" contenteditable="false">0331 . 805848488</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Mobil:</span>
+                        <span class="value" contenteditable="false">0177 . 77335588</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">E-Mail:</span>
+                        <span class="value-email" contenteditable="false">max.mustermann@musterdomain.de</span>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="edit-btn button" onclick="editInfo()">Editieren</button>
+                    <button class="save-btn button save-button" onclick="saveInfo()">Speichern</button>
+                </div>
+            </div>
+        
+            <!-- Übersicht Verträge -->
+            <div class="container_iN">
+                <div class="header_main">Übersicht Verträge</div>
+                <div>
+                    <div class="button-container">
+                        <button class="button add-button" onclick="openForm()">Neuen Vertrag hinzufügen</button>
+                    </div>
+                    <table class="contract-table" id="contractTable">
+                        <tr>
+                            <th>Versicherung</th>
+                            <th>ID</th>
+                            <th>Datum</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Zahnzusatzversicherung</td>
+                            <td>SMART4001-4382391m</td>
+                            <td>01.03.2022</td>
+                            <td><button class="button delete-button" onclick="deleteRow(this)">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Hausratversicherung</td>
+                            <td>HV-4382391-003</td>
+                            <td>15.07.2019</td>
+                            <td><button class="button delete-button" onclick="deleteRow(this)">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Strom</td>
+                            <td>S-6K0-49587372</td>
+                            <td>01.08.2015</td>
+                            <td><button class="button delete-button" onclick="deleteRow(this)">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>KFZ Versicherung</td>
+                            <td>KFZ-33994-BHI</td>
+                            <td>03.07.2013</td>
+                            <td><button class="button delete-button" onclick="deleteRow(this)">🗑️</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="form-popup" id="formPopup">
+                    <h2>Neuen Vertrag hinzufügen</h2>
+                    <input type="text" id="insurance" placeholder="Versicherung" required>
+                    <input type="text" id="id" placeholder="ID" required>
+                    <input type="date" id="date" required>
+                    <button class="button add-button" onclick="addContract()">Hinzufügen</button>
+                    <button class="button close-button" onclick="closeForm()">Schließen</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mittlere Spalte: Übersicht Schäden und Inkasso -->
+        <div class="column center-column">
+            <div class="container_iN">
+                <!-- Übersicht Schäden -->
+                <div class="header_main">Übersicht Schäden</div>
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Versicherung _SMART4001-4382391</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <table class="task-table" id="tasks_SMART4001-4382391">
+                            <thead>
+                                <tr>
+                                    <th>Aufgabe</th>
+                                    <th>Datum</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Gerät versendet</td>
+                                    <td>01.04.2024</td>
+                                    <td><button class="button delete-button" onclick="deleteTask(this)">🗑️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Reparatur wird durchgeführt</td>
+                                    <td>02.04.2024</td>
+                                    <td><button class="button" onclick="deleteTask(this)">🗑️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Gerät eingegangen</td>
+                                    <td>03.04.2024</td>
+                                    <td><button class="button" onclick="deleteTask(this)">🗑️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Warten auf Gerät</td>
+                                    <td>04.04.2024</td>
+                                    <td><button class="button" onclick="deleteTask(this)">🗑️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Schadensregulierung akzeptiert</td>
+                                    <td>05.04.2024</td>
+                                    <td><button class="button" onclick="deleteTask(this)">🗑️</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Schadensmeldung</td>
+                                    <td>06.04.2024</td>
+                                    <td><button class="button" onclick="deleteTask(this)">🗑️</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="add-task" onclick="openForm('SMART4001-4382391')">+</div>
+                    </div>
+                </div>
+        
+                <div class="accordion">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Versicherung HV-4382391-003</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-content">
+                        <table class="task-table" id="tasks_HV-4382391-003">
+                            <thead>
+                                <tr>
+                                    <th>Aufgabe</th>
+                                    <th>Datum</th>
+                                    <th>Aktionen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Schadensmeldung eingegangen</td>
+                                    <td>01.04.2024</td>
+                                    <td><button class="button" onclick="deleteTask(this)">🗑️</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="add-task" onclick="openForm('HV-4382391-003')">+</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="form-popup" id="formPopup">
+                <h2>Neue Aufgabe hinzufügen</h2>
+                <input type="text" id="task" placeholder="Aufgabe" required>
+                <input type="date" id="taskDate" required>
+                <button class="button add-button" onclick="addTask()">Hinzufügen</button>
+                <button class="button close-button" onclick="closeForm()">Schließen</button>
+            </div>
+        
+        
+            <!-- Inkasso Übersicht -->
+            <div class="container_iN">
+                <div class="header_main">
+                    <span>Inkasso/Exkasso Übersicht</span>
+                    <div>
+                        <select class="dropdown">
+                            <option>aktueller Monat</option>
+                            <option>letzter Monat</option>
+                        </select>
+                        <span class="total-amount">0,00 €</span>
+                    </div>
+                </div>
+        
+                <table id="inkassoTable">
+                    <thead>
+                        <tr>
+                            <th>Beschreibung</th>
+                            <th>Datum</th>
+                            <th>Betrag</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Versicherung SMART4001-4382391</td>
+                            <td>01.04.2024</td>
+                            <td class="negative-amount">-12,95 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Versicherung HV-4382391-003</td>
+                            <td>01.04.2024</td>
+                            <td class="negative-amount">-45,99 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Einzug (SEPA)</td>
+                            <td>15.03.2024</td>
+                            <td class="positive-amount">58,94 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Versicherung SMART4001-4382391</td>
+                            <td>01.03.2024</td>
+                            <td class="negative-amount">-12,95 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Versicherung HV-4382391-003</td>
+                            <td>01.03.2024</td>
+                            <td class="negative-amount">-45,99 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Einzug (SEPA)</td>
+                            <td>15.02.2024</td>
+                            <td class="positive-amount">58,94 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Versicherung SMART4001-4382391</td>
+                            <td>01.02.2024</td>
+                            <td class="negative-amount">-12,95 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Versicherung HV-4382391-003</td>
+                            <td>01.02.2024</td>
+                            <td class="negative-amount">-45,99 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Einzug (SEPA)</td>
+                            <td>15.01.2024</td>
+                            <td class="positive-amount">58,94 €</td>
+                            <td>
+                                <button class="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-task" onclick="addNewRow()">+</div>
+            </div>
+        </div>
+        
+        <!-- Rechte Spalte: Aktivitäten und Kontaktverlauf -->
+        <div class="column right-column">
+            <div class="container_Ak">
+                <div class="header_Ak">
+                    <span>Aktivitäts- und Kontaktverlauf</span>
+                    <button class="info-button" onclick="toggleInfo()">i</button>
+                </div>
+        
+                <div class="info-popup" id="infoPopup">
+                    <h3>Farb-Bedeutungen:</h3>
+                    <ul>
+                        <li><span class="circle gray"></span>Erstellt</li>
+                        <li><span class="circle red"></span>Mahnung</li>
+                        <li><span class="circle green"></span>Kontenausgleich</li>
+                        <li><span class="circle orange"></span>Schadensmeldung</li>
+                        <li><span class="circle yellow"></span>In Bearbeitung</li>
+                    </ul>
+                </div>
+        
+                <div class="filter">
+                    <select>
+                        <option>aktueller Monat</option>
+                        <option>letzter Monat</option>
+                    </select>
+                </div>
+        
+                <div class="activities">
+                    <!-- Liste der Aktivitäten -->
+                    <div class="activity">
+                        <span class="circle gray"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Anlage Person:</span>
+                                <span class="part2">Max Mustermann</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024 | <span class="source">TouchActive</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle gray"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Anlage Vertrag:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024 | <span class="source">TouchActive</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle red"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Mahnung:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle green"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Kontenausgleich:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle orange"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Schadensmeldung:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>22.03.2024 | <span class="source">Kundenportal</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle gray"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Anlage Person:</span>
+                                <span class="part2">Max Mustermann</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024 | <span class="source">TouchActive</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle gray"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Anlage Vertrag:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024 | <span class="source">TouchActive</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle red"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Mahnung:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle green"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Kontenausgleich:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle orange"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Schadensmeldung:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>22.03.2024 | <span class="source">Kundenportal</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle gray"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Anlage Vertrag:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024 | <span class="source">TouchActive</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle gray"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Anlage Vertrag:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024 | <span class="source">TouchActive</span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle red"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Mahnung:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="activity">
+                        <span class="circle green"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Kontenausgleich:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>12.01.2024
+                            </div>
+                        </div>
+                    </div>
+                    <div class="activity">
+                        <span class="circle orange"></span>
+                        <div class="text">
+                            <div class="title">
+                                <span class="part1">Schadensmeldung:</span>
+                                <span class="part2">SMART4001-4382391</span>
+                            </div>
+                            <div class="date">
+                                <span class="date-icon">📅</span>22.03.2024 | <span class="source">Kundenportal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer id="footer">
+		<div id="clipboard" class="content"></div>
+		<p>CollActive (<b>LM-2.8.0</b>&nbsp;-1u.106)</p>
+	</footer>
+</body>
+</html>
